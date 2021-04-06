@@ -1,0 +1,10 @@
+C:\Users\estte\Documents\CarFix\CarFix_CORRAL-SANTILLAN\DEVELOP\CarFix\bin\Debug\CarFix.exe.config
+C:\Users\estte\Documents\CarFix\CarFix_CORRAL-SANTILLAN\DEVELOP\CarFix\bin\Debug\CarFix.exe
+C:\Users\estte\Documents\CarFix\CarFix_CORRAL-SANTILLAN\DEVELOP\CarFix\bin\Debug\CarFix.pdb
+C:\Users\estte\Documents\CarFix\CarFix_CORRAL-SANTILLAN\DEVELOP\CarFix\obj\Debug\CarFix.csprojAssemblyReference.cache
+C:\Users\estte\Documents\CarFix\CarFix_CORRAL-SANTILLAN\DEVELOP\CarFix\obj\Debug\CarFix.Login_FRM.resources
+C:\Users\estte\Documents\CarFix\CarFix_CORRAL-SANTILLAN\DEVELOP\CarFix\obj\Debug\CarFix.Properties.Resources.resources
+C:\Users\estte\Documents\CarFix\CarFix_CORRAL-SANTILLAN\DEVELOP\CarFix\obj\Debug\CarFix.csproj.GenerateResource.cache
+C:\Users\estte\Documents\CarFix\CarFix_CORRAL-SANTILLAN\DEVELOP\CarFix\obj\Debug\CarFix.csproj.CoreCompileInputs.cache
+C:\Users\estte\Documents\CarFix\CarFix_CORRAL-SANTILLAN\DEVELOP\CarFix\obj\Debug\CarFix.exe
+C:\Users\estte\Documents\CarFix\CarFix_CORRAL-SANTILLAN\DEVELOP\CarFix\obj\Debug\CarFix.pdb
