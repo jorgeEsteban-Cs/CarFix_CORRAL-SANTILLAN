@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarFix", "CarFix.csproj", "{68046E3C-A858-4BC9-A995-81CDCBC9F231}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarFix_Ui", "CarFix_Ui.csproj", "{68046E3C-A858-4BC9-A995-81CDCBC9F231}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarFix_Domain", "..\CarFix_Domain\CarFix_Domain.csproj", "{57C9FBDA-2B9D-44AE-8BF0-4B72F2BCC280}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarFix_LibBD", "..\CarFix_LibBD\CarFix_LibBD.csproj", "{FC218B02-8B23-4E9F-9D7B-A7E439B9A6EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{68046E3C-A858-4BC9-A995-81CDCBC9F231}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68046E3C-A858-4BC9-A995-81CDCBC9F231}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68046E3C-A858-4BC9-A995-81CDCBC9F231}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57C9FBDA-2B9D-44AE-8BF0-4B72F2BCC280}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57C9FBDA-2B9D-44AE-8BF0-4B72F2BCC280}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57C9FBDA-2B9D-44AE-8BF0-4B72F2BCC280}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57C9FBDA-2B9D-44AE-8BF0-4B72F2BCC280}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC218B02-8B23-4E9F-9D7B-A7E439B9A6EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC218B02-8B23-4E9F-9D7B-A7E439B9A6EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC218B02-8B23-4E9F-9D7B-A7E439B9A6EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC218B02-8B23-4E9F-9D7B-A7E439B9A6EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

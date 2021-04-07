@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{68046E3C-A858-4BC9-A995-81CDCBC9F231}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>CarFix</RootNamespace>
-    <AssemblyName>CarFix</AssemblyName>
+    <RootNamespace>CarFix_UI</RootNamespace>
+    <AssemblyName>CarFix_UI</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -54,8 +54,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Usuarios_FRM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usuarios_FRM.Designer.cs">
+      <DependentUpon>Usuarios_FRM.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Login_FRM.resx">
       <DependentUpon>Login_FRM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usuarios_FRM.resx">
+      <DependentUpon>Usuarios_FRM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -65,6 +74,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -78,6 +88,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CarFix_Domain\CarFix_Domain.csproj">
+      <Project>{57c9fbda-2b9d-44ae-8bf0-4b72f2bcc280}</Project>
+      <Name>CarFix_Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CarFix_LibBD\CarFix_LibBD.csproj">
+      <Project>{fc218b02-8b23-4e9f-9d7b-a7e439b9a6eb}</Project>
+      <Name>CarFix_LibBD</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

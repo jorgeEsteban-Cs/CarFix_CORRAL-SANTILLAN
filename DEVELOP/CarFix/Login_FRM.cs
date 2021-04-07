@@ -34,17 +34,41 @@ namespace CarFix
             Application.Exit();
         }
 
-
+        //HOVER ON CLOSE BTN
         private void pictureBoxExit_MouseMove_1(object sender, MouseEventArgs e)
         {
             pictureBoxExit.BackColor = Color.FromArgb(231, 91, 91);
         }
 
+        //HOVER ON CLOSE BTN
         private void pictureBoxExit_MouseLeave(object sender, EventArgs e)
         {
             pictureBoxExit.BackColor = Color.FromArgb(32, 163, 158);
         }
 
-    
+
+
+        //BTN ON CLICK EVENT
+        private void btn_entrar_Click(object sender, EventArgs e)
+        {
+            Form menuEnter = new Usuarios_FRM();//Cambiando De ventana
+            menuEnter.Activate();
+            menuEnter.Show();
+            
+            
+
+        }
+
+        //HOVER ON ENTER BTN
+        private void btn_entrar_MouseMove(object sender, MouseEventArgs e)
+        {
+            btn_entrar.BackColor = Color.FromArgb(239, 91, 91);
+
+        }
+        //HOVER ON ENTER BTN
+        private void btn_entrar_MouseLeave(object sender, EventArgs e)
+        {
+            btn_entrar.BackColor = Color.FromArgb(32, 163, 158);
+        }
     }
 }
