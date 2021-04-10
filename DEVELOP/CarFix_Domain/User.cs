@@ -16,7 +16,7 @@ namespace CarFix_Domain
         public string email { get; set; }
         public string cellPhone { get; set; }
         public string curp { get; set; }
-        private string password { get; set; }
+        public string password { get; set; }
 
 
 
@@ -43,7 +43,7 @@ namespace CarFix_Domain
         /// / Retorna un boleano para verificar si el methodo se cumplio correctamente
         /// / it returns a boolean type to verify if the new user was correctly inseted.
         /// </returns>
-        public bool insert(string name, string lastName, string email, string cellPhone, string curp, string password) 
+        public bool insert(string name, string last_name, string email, string cell_phone ,string curp, string password) 
         {
             bool res = false;
 

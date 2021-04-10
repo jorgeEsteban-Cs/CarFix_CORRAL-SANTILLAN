@@ -10,13 +10,13 @@ namespace CarFix_Domain
     {
 
         //ATRIBUTOS
-        public string serviceName;
-        public ServiceType service;
-        public DateTime startDate;
-        public DateTime endDate;
-        public double cost;
-        public string licensePlate;
-        public string serialNumber;
+        public string serviceName { get; set; }
+        public ServiceType service { get; set; }
+        public DateTime startDate { get; set; }
+        public DateTime endDate { get; set; }
+        public double cost { get; set; }
+        public string licensePlate { get; set; }
+        public string serialNumber { get; set; }
 
         //METODOS
 
@@ -31,7 +31,7 @@ namespace CarFix_Domain
         /// <param name="licensePlate"></param>
         /// <param name="serialNumber"></param>
         /// <returns></returns>
-        public bool insert(string serviceName, ServiceType service, DateTime startDate, DateTime endDate, double cost, string licensePlate, string serialNumber) 
+        public bool insert(string service_name, Enum service_type, double cost, string car, string license_plate, string serial_number) 
         {
             bool res = false;
 
@@ -52,7 +52,7 @@ namespace CarFix_Domain
         /// <param name="licensePlate"></param>
         /// <param name="serialNumber"></param>
         /// <returns></returns>
-        public bool update(string serviceName, ServiceType service, DateTime startDate, DateTime endDate, double cost, string licensePlate, string serialNumber) 
+        public bool update(string service_name, ServiceType service_type, double cost, string car, string license_plate, string serial_number) 
         {
             bool res = false;
 
@@ -98,12 +98,11 @@ namespace CarFix_Domain
 
 
         //CONSTRUCTOR
-        public Sdmave(string serviceName, ServiceType service, DateTime startDate, DateTime endDate, double cost, string licensePlate, string serialNumber)
+        public Sdmave(string serviceName, ServiceType service, double cost, string licensePlate, string serialNumber)
         {
             this.serviceName = serviceName;
             this.service = service;
-            this.startDate = startDate;
-            this.endDate = endDate;
+            this.startDate = DateTime.Now;
             this.cost = cost;
             this.licensePlate = licensePlate;
             this.serialNumber = serialNumber;

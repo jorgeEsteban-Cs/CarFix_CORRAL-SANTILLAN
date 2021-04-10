@@ -20,15 +20,6 @@ namespace CarFix_LibBD
 
         //METODOS
 
-        public override bool delete()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override bool insert()
-        {
-            throw new NotImplementedException();
-        }
 
 
         //METODO para autentificar al usuario
@@ -78,21 +69,12 @@ namespace CarFix_LibBD
             return res;
         }
 
-        public override List<List<string>> read()
-        {
-            throw new NotImplementedException();
-        }
+  
 
-        public override List<List<string>> read(string id)
-        {
-            throw new NotImplementedException();
-        }
 
-        public override bool update()
-        {
-            throw new NotImplementedException();
-        }
 
+
+        //Metodo de Abrir Conexion a BD
         public override bool conexion()
         {
             bool res = false;
@@ -124,6 +106,7 @@ namespace CarFix_LibBD
             
         }
 
+        //Metodo de desconexion a base de datos
         public override bool desconexion()
         {
             bool res = false;
@@ -141,7 +124,7 @@ namespace CarFix_LibBD
             }
             catch (MySqlException myex)
             {
-                BD.BD_ERROR = "ERROR de MYSQL_EXCEPTION " + myex.Message;
+                BD.BD_ERROR = "ERROR de MYSQL_EXCEPTION al cerrar la base de datos" + myex.Message;
 
             }
             catch (Exception ex)
@@ -149,6 +132,97 @@ namespace CarFix_LibBD
                 BD.BD_ERROR = "ERROR al cerrarse la base de datos " + ex.Message;
             }
             return res;
+        }
+
+
+        /// <summary>
+        /// metodo insert a usuario
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="last_name"></param>
+        /// <param name="email"></param>
+        /// <param name="cell_phone"></param>
+        /// <param name="curp"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public override bool insert(string name, string last_name, string email, string cell_phone, string curp, string password)
+        {
+            //var de verificación
+            bool res = false;
+            //TryCatch
+            try
+            {
+                //abrir conexion
+                this.conexion();
+                //crearQUery
+                string query = $"INSERT INTO users VALUES(name='{name}', last_name='{last_name}', email='{email}', cell_phone='{cell_phone}', curp='{curp}', password='{password}')";
+                //Conectar Query a Sentencia INSERT
+                comMyslq = new MySqlCommand(query, conMysql);
+                //Ejecutar Query
+                comMyslq.ExecuteNonQuery();
+                //cambiar valor de retorno pará confirmación de insercción correcta
+                res = true;
+            }
+            catch (MySqlException myex)
+            {
+            }
+            //Excepciones
+
+            //retornar valor de verificación
+            return res;
+        }
+
+        public override bool Insert(string service_name, Enum service_type, double cost, string car, string license_plate, string serial_number, int id_user)
+        {
+            bool res = false;
+
+            //try
+            try 
+            {
+                
+                //abrir conexion
+                this.conexion();
+                //Crear Query
+                string query = $"INSERT INTO sdmaves " +
+                    $"VALUES(service_name='{service_name}', service_type={service_type}, cost={cost}, car='{car}', license_plate='{license_plate}', serial_number='{serial_number}', id_user={id_user})";
+                //Conectar Query Con Sentencia INSERT
+                comMyslq = new MySqlCommand(query, conMysql);
+                //Ejecutar Query
+                comMyslq.ExecuteNonQuery();
+                //cambiar valor de retorno
+                //catch
+            }
+
+            catch (MySqlException myex) 
+            {
+            
+            }
+            return res;
+        }
+
+        public override bool update(string name, string last_name, string email, string curp, string password)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override bool Update(string service_name, Enum service_type, double cost, string car, string license_plate, string serial_number)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override List<List<string>> read(string table, string search)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override List<List<string>> Read(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override bool delete(string table, string id)
+        {
+            throw new NotImplementedException();
         }
 
 
