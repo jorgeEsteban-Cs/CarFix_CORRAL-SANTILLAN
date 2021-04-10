@@ -144,8 +144,7 @@ namespace CarFix
             this.btn_entrar.Text = "entrar";
             this.btn_entrar.UseVisualStyleBackColor = false;
             this.btn_entrar.Click += new System.EventHandler(this.btn_entrar_Click);
-            this.btn_entrar.MouseLeave += new System.EventHandler(this.btn_entrar_MouseLeave);
-            this.btn_entrar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btn_entrar_MouseMove);
+            
             // 
             // textBox_Login_password
             // 

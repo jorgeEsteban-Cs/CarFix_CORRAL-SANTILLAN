@@ -11,12 +11,12 @@ namespace CarFix_Domain
     public class User
     {
         //atributos
-        public string name;
-        public string lastName;
-        public string email;
-        public string cellPhone;
-        public string curp;
-        private string password;
+        public string name { get; set; }
+        public string lastName { get; set; }
+        public string email { get; set; }
+        public string cellPhone { get; set; }
+        public string curp { get; set; }
+        private string password { get; set; }
 
 
 
@@ -28,7 +28,7 @@ namespace CarFix_Domain
 
 
         //METHODS.........................
-
+ 
         /// <summary>
         /// /Metodo insert para la creacion y captura de un nuevo usuario
         /// insert method, this will be used to create a new user in the system.
@@ -103,12 +103,12 @@ namespace CarFix_Domain
         /// <returns>
         /// Retorna una Lista de Listas de User
         /// </returns>
-        public List<List<User>> select(string search) 
-        {
+       // public List<List<User>> read(string search) 
+        //{
             
         
             
-        }
+        //}
         
         
 

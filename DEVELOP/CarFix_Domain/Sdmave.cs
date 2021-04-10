@@ -79,7 +79,7 @@ namespace CarFix_Domain
         /// </summary>
         /// <param name="search"></param>
         /// <returns></returns>
-        public List<List<Sdmave>> select(string search) 
+        /*public List<List<Sdmave>> read(string search) 
         {
         
         }
@@ -88,10 +88,10 @@ namespace CarFix_Domain
         /// </summary>
         /// <param name="id_user"></param>
         /// <returns></returns>
-        public List<List<Sdmave>> select(int id_user)
+        public List<List<Sdmave>> read(int id_user)
         {
 
-        }
+        }*/
 
 
 

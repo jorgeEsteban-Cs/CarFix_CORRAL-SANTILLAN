@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CarFix_Domain;
+using CarFix_LibBD;
 
 namespace CarFix
 {
@@ -51,16 +53,30 @@ namespace CarFix
         //BTN ON CLICK EVENT
         private void btn_entrar_Click(object sender, EventArgs e)
         {
-            Form menuEnter = new Usuarios_FRM();//Cambiando De ventana
-            menuEnter.Activate();
-            menuEnter.Show();
+            bool res = false;
+            Login login_user = new Login();
+            res = login_user.login(textBox_Login_Usuario.Text.ToString(), textBox_Login_password.Text.ToString());
+
+            if (res)
+            {
+
+                Form menuEnter = new Usuarios_FRM();//Cambiando De ventana
+                menuEnter.Activate();
+                menuEnter.Show();
+                MessageBox.Show("Bienvenido");
+            }
+            else 
+            {
+               MessageBox.Show($"No se Encontro Usuario {BD.BD_ERROR}");
+            }
+            
             
             
 
         }
 
         //HOVER ON ENTER BTN
-        private void btn_entrar_MouseMove(object sender, MouseEventArgs e)
+        /*private void btn_entrar_MouseMove(object sender, MouseEventArgs e)
         {
             btn_entrar.BackColor = Color.FromArgb(239, 91, 91);
 
@@ -69,6 +85,6 @@ namespace CarFix
         private void btn_entrar_MouseLeave(object sender, EventArgs e)
         {
             btn_entrar.BackColor = Color.FromArgb(32, 163, 158);
-        }
+        }*/
     }
 }
