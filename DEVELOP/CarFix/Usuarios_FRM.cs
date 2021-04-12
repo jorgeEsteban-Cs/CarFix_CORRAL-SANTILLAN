@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CarFix_UI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -38,6 +39,13 @@ namespace CarFix
         private void pictureBoxExit_MouseLeave(object sender, EventArgs e)
         {
             this.pictureBoxExit.BackColor = Color.FromArgb(32, 163, 158);
+        }
+
+        private void button_nuevo_user_Click(object sender, EventArgs e)
+        {
+            Insert_user_FRM n = new Insert_user_FRM();
+            n.TopLevel = true;
+            n.Show();
         }
     }
 }

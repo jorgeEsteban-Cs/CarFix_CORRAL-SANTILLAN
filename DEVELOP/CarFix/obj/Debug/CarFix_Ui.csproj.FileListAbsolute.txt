@@ -40,3 +40,5 @@ C:\Users\estte\Documents\CarFix3\CarFix_CORRAL-SANTILLAN\DEVELOP\CarFix\bin\Debu
 C:\Users\estte\Documents\CarFix3\CarFix_CORRAL-SANTILLAN\DEVELOP\CarFix\obj\Debug\CarFix_Ui.csproj.CopyComplete
 C:\Users\estte\Documents\CarFix3\CarFix_CORRAL-SANTILLAN\DEVELOP\CarFix\obj\Debug\CarFix_UI.exe
 C:\Users\estte\Documents\CarFix3\CarFix_CORRAL-SANTILLAN\DEVELOP\CarFix\obj\Debug\CarFix_UI.pdb
+C:\Users\estte\Documents\CarFix3\CarFix_CORRAL-SANTILLAN\DEVELOP\CarFix\obj\Debug\CarFix_UI.Insert_user_FRM.resources
+C:\Users\estte\Documents\CarFix3\CarFix_CORRAL-SANTILLAN\DEVELOP\CarFix\obj\Debug\CarFix_UI.Modificar_user_FRM.resources

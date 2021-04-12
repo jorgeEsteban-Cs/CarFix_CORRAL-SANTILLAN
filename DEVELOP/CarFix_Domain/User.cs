@@ -46,7 +46,16 @@ namespace CarFix_Domain
         public bool insert(string name, string last_name, string email, string cell_phone ,string curp, string password) 
         {
             bool res = false;
+            try 
+            {
+                MariaBD maria = new MariaBD("car_fix_bd", "root", "1234", "127.0.0.1", "3306");
+                maria.insertUsers(name, last_name, email, cell_phone, curp, password);
+                res = true;
+            } catch(Exception ex) 
+            {
+                BD.BD_ERROR = "Error al insertar en user Class "+ ex.Message;
 
+            }
             return res;
         }
 

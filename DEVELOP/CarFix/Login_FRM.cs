@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CarFix_Domain;
-using CarFix_LibBD;
+
 
 namespace CarFix
 {
@@ -64,10 +64,11 @@ namespace CarFix
                 menuEnter.Activate();
                 menuEnter.Show();
                 MessageBox.Show("Bienvenido");
+                
             }
             else 
             {
-               MessageBox.Show($"No se Encontro Usuario {BD.BD_ERROR}");
+               MessageBox.Show($"No se Encontro Usuario");
             }
             
             

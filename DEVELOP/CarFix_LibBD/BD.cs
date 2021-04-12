@@ -32,12 +32,12 @@ namespace CarFix_LibBD
         public abstract bool  login(string email, string password);
 
         //----insert metodo abstracto sobrecargado, un metodo para update Usuarios y otro para Servicios_de_mantenimiento
-        public abstract bool insert(string name, string last_name, string email, string cell_phone, string curp, string password);
-        public abstract bool Insert(string service_name, Enum service_type, double cost, string car, string license_plate, string serial_number, int id_user);
+        public abstract bool insertUsers(string name, string last_name, string email, string cell_phone, string curp, string password);
+        public abstract bool InsertService(string service_name, Enum service_type, DateTime fecha, double cost, string car, string license_plate, string serial_number, int id_user);
 
         //---update metodo abstracto con sobrecarga, un metodo para update Usuarios y otro para Servicios_de_mantenimiento
-        public abstract bool update(string name, string last_name, string email,string curp, string password);
-        public abstract bool Update(string service_name, Enum service_type, double cost, string car, string license_plate, string serial_number);
+        public abstract bool updateUsers(string name, string last_name, string email,string curp, string password);
+        public abstract bool UpdateServices(string service_name, Enum service_type, double cost, string car, string license_plate, string serial_number);
 
         //---delete metodo abstracto
         public abstract bool delete(string table, string id);

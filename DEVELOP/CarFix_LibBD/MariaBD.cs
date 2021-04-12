@@ -8,6 +8,7 @@ using System.Data;
 using System.IO;
 using MySql.Data.MySqlClient;
 
+
 namespace CarFix_LibBD
 {
     public class MariaBD : BD
@@ -145,7 +146,7 @@ namespace CarFix_LibBD
         /// <param name="curp"></param>
         /// <param name="password"></param>
         /// <returns></returns>
-        public override bool insert(string name, string last_name, string email, string cell_phone, string curp, string password)
+        public override bool insertUsers(string name, string last_name, string email, string cell_phone, string curp, string password)
         {
             //var de verificación
             bool res = false;
@@ -165,6 +166,11 @@ namespace CarFix_LibBD
             }
             catch (MySqlException myex)
             {
+                BD.BD_ERROR = "Error de mysql al insertar en MariaBd" + myex.Message;
+            }
+            catch (Exception ex) 
+            {
+                BD.BD_ERROR = "Error general al insertar" + ex.Message;
             }
             //Excepciones
 
@@ -172,7 +178,7 @@ namespace CarFix_LibBD
             return res;
         }
 
-        public override bool Insert(string service_name, Enum service_type, double cost, string car, string license_plate, string serial_number, int id_user)
+        public override bool InsertService(string service_name, Enum service_type, DateTime fecha, double cost, string car, string license_plate, string serial_number, int id_user)
         {
             bool res = false;
 
@@ -200,12 +206,12 @@ namespace CarFix_LibBD
             return res;
         }
 
-        public override bool update(string name, string last_name, string email, string curp, string password)
+        public override bool updateUsers(string name, string last_name, string email, string curp, string password)
         {
             throw new NotImplementedException();
         }
 
-        public override bool Update(string service_name, Enum service_type, double cost, string car, string license_plate, string serial_number)
+        public override bool UpdateServices(string service_name, Enum service_type, double cost, string car, string license_plate, string serial_number)
         {
             throw new NotImplementedException();
         }

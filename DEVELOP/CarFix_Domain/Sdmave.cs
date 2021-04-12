@@ -31,10 +31,10 @@ namespace CarFix_Domain
         /// <param name="licensePlate"></param>
         /// <param name="serialNumber"></param>
         /// <returns></returns>
-        public bool insert(string service_name, Enum service_type, double cost, string car, string license_plate, string serial_number) 
+        public bool insert(string service_name, ServiceType service_type, double cost, string car, string license_plate, string serial_number) 
         {
+            
             bool res = false;
-
 
             return res;
         }
@@ -55,7 +55,6 @@ namespace CarFix_Domain
         public bool update(string service_name, ServiceType service_type, double cost, string car, string license_plate, string serial_number) 
         {
             bool res = false;
-
 
             return res;
         }

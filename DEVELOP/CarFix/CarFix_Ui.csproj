@@ -92,11 +92,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Insert_user_FRM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Insert_user_FRM.Designer.cs">
+      <DependentUpon>Insert_user_FRM.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login_FRM.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Login_FRM.Designer.cs">
       <DependentUpon>Login_FRM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modificar_user_FRM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modificar_user_FRM.Designer.cs">
+      <DependentUpon>Modificar_user_FRM.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -106,8 +118,14 @@
     <Compile Include="Usuarios_FRM.Designer.cs">
       <DependentUpon>Usuarios_FRM.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Insert_user_FRM.resx">
+      <DependentUpon>Insert_user_FRM.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login_FRM.resx">
       <DependentUpon>Login_FRM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modificar_user_FRM.resx">
+      <DependentUpon>Modificar_user_FRM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Usuarios_FRM.resx">
       <DependentUpon>Usuarios_FRM.cs</DependentUpon>
@@ -140,10 +158,6 @@
     <ProjectReference Include="..\CarFix_Domain\CarFix_Domain.csproj">
       <Project>{57c9fbda-2b9d-44ae-8bf0-4b72f2bcc280}</Project>
       <Name>CarFix_Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CarFix_LibBD\CarFix_LibBD.csproj">
-      <Project>{fc218b02-8b23-4e9f-9d7b-a7e439b9a6eb}</Project>
-      <Name>CarFix_LibBD</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

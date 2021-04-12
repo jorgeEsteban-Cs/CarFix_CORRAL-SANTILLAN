@@ -312,6 +312,7 @@ namespace CarFix
             this.button_nuevo_user.TabIndex = 5;
             this.button_nuevo_user.Text = "Nuevo";
             this.button_nuevo_user.UseVisualStyleBackColor = false;
+            this.button_nuevo_user.Click += new System.EventHandler(this.button_nuevo_user_Click);
             // 
             // dataGridView_users_searched
             // 
