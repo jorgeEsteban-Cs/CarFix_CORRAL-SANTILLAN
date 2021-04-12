@@ -34,7 +34,7 @@ namespace CarFix_LibBD
             try
             {
                 //abrir con
-               
+                this.conMysql = new MySqlConnection(this.conectionString);
                 this.conexion();
                 //crear query
                 string query = $"SELECT * from users WHERE email='{email}' AND password='{password}'";
@@ -63,7 +63,7 @@ namespace CarFix_LibBD
             }
             finally 
             {
-                this.desconexion();
+                conMysql.Close();
             }
 
             //var retorno de resultado
@@ -82,7 +82,7 @@ namespace CarFix_LibBD
             try
             {
                 //instanciar conexion
-                this.conMysql = new MySqlConnection(this.conectionString);
+                
                 if (conMysql.State == ConnectionState.Closed)
                 {
                     conMysql.Open();
@@ -114,12 +114,12 @@ namespace CarFix_LibBD
             try
             {
                 //instanciar conexion
-                this.conMysql = new MySqlConnection();
+                
                 if (conMysql.State != ConnectionState.Closed)
                 {
                     conMysql.Close();
                 }
-                
+
                 //se establecio la conexion
                 res = true;
             }
@@ -131,6 +131,10 @@ namespace CarFix_LibBD
             catch (Exception ex)
             {
                 BD.BD_ERROR = "ERROR al cerrarse la base de datos " + ex.Message;
+            }
+            finally 
+            {
+                conMysql.Close();
             }
             return res;
         }
@@ -154,23 +158,37 @@ namespace CarFix_LibBD
             try
             {
                 //abrir conexion
+                this.conMysql = new MySqlConnection(this.conectionString);
                 this.conexion();
                 //crearQUery
-                string query = $"INSERT INTO users VALUES(name='{name}', last_name='{last_name}', email='{email}', cell_phone='{cell_phone}', curp='{curp}', password='{password}')";
+                string query = $"INSERT INTO users(name, last_name, email, cell_phone, curp, password) VALUES ('{name}', '{last_name}', '{email}','{cell_phone}','{curp}','{password}')";
                 //Conectar Query a Sentencia INSERT
                 comMyslq = new MySqlCommand(query, conMysql);
                 //Ejecutar Query
-                comMyslq.ExecuteNonQuery();
+                int rows = comMyslq.ExecuteNonQuery();
                 //cambiar valor de retorno pará confirmación de insercción correcta
-                res = true;
+                if (rows == 1)
+                {
+                    res = true;
+                }
+                {
+                    BD.BD_ERROR = "ERROR EN INSERTAR MARIA DB";
+                }
+
             }
             catch (MySqlException myex)
             {
+                res = false;
                 BD.BD_ERROR = "Error de mysql al insertar en MariaBd" + myex.Message;
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
+                res = false;
                 BD.BD_ERROR = "Error general al insertar" + ex.Message;
+            }
+            finally 
+            {
+                this.desconexion();
             }
             //Excepciones
 

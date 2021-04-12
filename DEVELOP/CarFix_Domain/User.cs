@@ -53,6 +53,7 @@ namespace CarFix_Domain
                 res = true;
             } catch(Exception ex) 
             {
+                res = false;
                 BD.BD_ERROR = "Error al insertar en user Class "+ ex.Message;
 
             }

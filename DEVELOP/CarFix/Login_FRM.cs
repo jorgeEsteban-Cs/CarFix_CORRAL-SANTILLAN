@@ -77,7 +77,7 @@ namespace CarFix
         }
 
         //HOVER ON ENTER BTN
-        /*private void btn_entrar_MouseMove(object sender, MouseEventArgs e)
+        /*private void {,´p{(object sender, MouseEventArgs e)
         {
             btn_entrar.BackColor = Color.FromArgb(239, 91, 91);
 
