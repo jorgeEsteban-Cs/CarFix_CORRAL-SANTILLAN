@@ -11,24 +11,58 @@ namespace CarFix_Domain
     public class User
     {
         //atributos
-        public string name { get; set; }
-        public string lastName { get; set; }
-        public string email { get; set; }
-        public string cellPhone { get; set; }
-        public string curp { get; set; }
-        public string password { get; set; }
+        private string _name;
+        private string _lastName;
+        private string _email;
+        private string _cellPhone;
+        private string _curp;
+        private string _password;
+
+        //LISTA DE CAMPOS para insertar y Modificar
+        public List<object> fieldList = new List<object>()
+        {
+            "name",
+            "last_name",
+            "email",
+            "cell_phone",
+            "curp",
+            "password"
+        };
+
+        //lista de CAMPOS PARA BUSQUEDA
+        public List<object> fieldListRead = new List<object>()
+        {
+            "name",
+            "last_name",
+            "email",
+            "cell_phone",
+            "curp"
+        };
+
+        public User(string name, string lastName, string email, string cellPhone, string curp, string password)
+        {
+            Name = name;
+            LastName = lastName;
+            Email = email;
+            CellPhone = cellPhone;
+            Curp = curp;
+            Password = password;
+        }
 
 
 
+        //Campos Encapsualdos
+        public string Name { get => _name; set => _name = "'" + value + "'"; }
+        public string LastName { get => _lastName; set => _lastName = "'" + value + "'"; }
+        public string Email { get => _email; set => _email = "'" + value + "'"; }
+        public string CellPhone { get => _cellPhone; set => _cellPhone = "'" + value + "'"; }
+        public string Curp { get => _curp; set => _curp = "'" + value + "'"; }
+        public string Password { get => _password; set => _password = "'" + value + "'"; }
 
-
-
-
-
-
+        
 
         //METHODS.........................
- 
+
         /// <summary>
         /// /Metodo insert para la creacion y captura de un nuevo usuario
         /// insert method, this will be used to create a new user in the system.
@@ -43,20 +77,21 @@ namespace CarFix_Domain
         /// / Retorna un boleano para verificar si el methodo se cumplio correctamente
         /// / it returns a boolean type to verify if the new user was correctly inseted.
         /// </returns>
-        public bool insert(string name, string last_name, string email, string cell_phone ,string curp, string password) 
-        {
+        public bool insert()
+        { 
             bool res = false;
-            try 
+            List<object> data = new List<object>()
             {
-                MariaBD maria = new MariaBD("car_fix_bd", "root", "1234", "127.0.0.1", "3306");
-                maria.insertUsers(name, last_name, email, cell_phone, curp, password);
-                res = true;
-            } catch(Exception ex) 
-            {
-                res = false;
-                BD.BD_ERROR = "Error al insertar en user Class "+ ex.Message;
-
-            }
+                Name,
+                LastName,
+                Email,
+                CellPhone,
+                Curp,
+                Password
+            };
+            BD mysql = new MariaBD("car_fix_bd", "root", "1234", "127.0.0.1", "3306");
+            mysql.insert("users", this.fieldList, data);
+            
             return res;
         }
 
@@ -81,10 +116,22 @@ namespace CarFix_Domain
         ///  
         /// 
         /// </returns>
-        public bool update(string name, string lastName, string email, string cellPhone, string curp, string password) 
+        public bool update(int id) 
         {
             bool res = false;
+            List<object> data = new List<object>()
+            {
+                Name,
+                LastName,
+                Email,
+                CellPhone,
+                Curp,
+                Password
+            };
+            BD mysql = new MariaBD("car_fix_bd", "root", "1234", "127.0.0.1", "3306");
+            mysql.update("users", this.fieldList, data, id);
 
+            
 
             return res;
         }
@@ -99,41 +146,23 @@ namespace CarFix_Domain
         {
             bool res = false;
 
-
+            BD mysql = new MariaBD("car_fix_bd", "root", "1234", "127.0.0.1", "3306");
+            mysql.delete("users",id);
             return res;
         
         }
 
 
-        /// <summary>
-        /// /Este metodo recibe un string y lo busca en la base de datos con el operador LIKE
-        /// 
-        /// </summary>
-        /// <param name="search"></param>
-        /// <returns>
-        /// Retorna una Lista de Listas de User
-        /// </returns>
-       // public List<List<User>> read(string search) 
-        //{
-            
-        
-            
-        //}
-        
-        
-
-
-
-
-        //constructor
-        public User(string name, string lastName, string email, string cellPhone, string curp, string password)
+        public List<List<User>> read(string search) 
         {
-            this.name = name;
-            this.lastName = lastName;
-            this.email = email;
-            this.cellPhone = cellPhone;
-            this.curp = curp;
-            this.password = password;
+            List<List<User>> users = new List<List<User>>();
+
+            BD mysql = new MariaBD("car_fix_bd", "root", "1234", "127.0.0.1", "3306");
+            mysql.read(fieldListRead, "users", search);
+
+            return users;
+        
         }
+        
     }
 }

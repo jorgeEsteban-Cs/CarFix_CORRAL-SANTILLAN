@@ -47,5 +47,10 @@ namespace CarFix
             n.TopLevel = true;
             n.Show();
         }
+
+        private void button_modificar_user_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

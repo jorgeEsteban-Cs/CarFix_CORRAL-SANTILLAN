@@ -82,7 +82,7 @@ namespace CarFix_LibBD
             try
             {
                 //instanciar conexion
-                
+
                 if (conMysql.State == ConnectionState.Closed)
                 {
                     conMysql.Open();
@@ -99,7 +99,11 @@ namespace CarFix_LibBD
                 BD.BD_ERROR = "ERROR de MYSQL_EXCEPTION al conectarse a la base de datos" + myex.Message;
 
             }
-            catch (Exception ex) 
+            catch (IOException ioex) 
+            {
+                BD.BD_ERROR = "ERROR IO EX" + ioex.Message;
+            }
+            catch (Exception ex)
             {
                 BD.BD_ERROR = "ERROR al conectarse a la base de datos " + ex.Message;
             }
@@ -150,7 +154,7 @@ namespace CarFix_LibBD
         /// <param name="curp"></param>
         /// <param name="password"></param>
         /// <returns></returns>
-        public override bool insertUsers(string name, string last_name, string email, string cell_phone, string curp, string password)
+        public override bool insert(string table, List<object> fieldList, List<object> data)
         {
             //var de verificación
             bool res = false;
@@ -160,8 +164,23 @@ namespace CarFix_LibBD
                 //abrir conexion
                 this.conMysql = new MySqlConnection(this.conectionString);
                 this.conexion();
+                //creando el query de las listas
+                string campos = "";
+                string valores = "";
+                foreach (object campo in fieldList) 
+                {
+                    campos += (string)campo+", ";
+                }
+                foreach (object valor in data) 
+                {
+                    valores += (string)valor + ", "; 
+                }
+                campos = campos.Remove(campos.Length -2);
+                valores = valores.Remove(valores.Length - 2);
+
+
                 //crearQUery
-                string query = $"INSERT INTO users(name, last_name, email, cell_phone, curp, password) VALUES ('{name}', '{last_name}', '{email}','{cell_phone}','{curp}','{password}')";
+                string query = $"INSERT INTO {table} ({campos}) VALUES ({valores})";
                 //Conectar Query a Sentencia INSERT
                 comMyslq = new MySqlCommand(query, conMysql);
                 //Ejecutar Query
@@ -188,7 +207,7 @@ namespace CarFix_LibBD
             }
             finally 
             {
-                this.desconexion();
+                conMysql.Close();
             }
             //Excepciones
 
@@ -196,58 +215,157 @@ namespace CarFix_LibBD
             return res;
         }
 
-        public override bool InsertService(string service_name, Enum service_type, DateTime fecha, double cost, string car, string license_plate, string serial_number, int id_user)
+        public override bool delete(string table, int id)
         {
+            //var de verificación
             bool res = false;
-
-            //try
-            try 
+            //TryCatch
+            try
             {
-                
                 //abrir conexion
+                this.conMysql = new MySqlConnection(this.conectionString);
                 this.conexion();
-                //Crear Query
-                string query = $"INSERT INTO sdmaves " +
-                    $"VALUES(service_name='{service_name}', service_type={service_type}, cost={cost}, car='{car}', license_plate='{license_plate}', serial_number='{serial_number}', id_user={id_user})";
-                //Conectar Query Con Sentencia INSERT
+                //creando el query de las listas
+                
+
+
+                //crearQUery
+                string query = $"DELETE FROM {table} WHERE ({id})";
+                //Conectar Query a Sentencia INSERT
                 comMyslq = new MySqlCommand(query, conMysql);
                 //Ejecutar Query
-                comMyslq.ExecuteNonQuery();
-                //cambiar valor de retorno
-                //catch
-            }
+                int rows = comMyslq.ExecuteNonQuery();
+                //cambiar valor de retorno pará confirmación de insercción correcta
+                if (rows == 1)
+                {
+                    res = true;
+                }
+                {
+                    BD.BD_ERROR = "ERROR EN INSERTAR MARIA DB";
+                }
 
-            catch (MySqlException myex) 
-            {
-            
             }
+            catch (MySqlException myex)
+            {
+                res = false;
+                BD.BD_ERROR = "Error de mysql al insertar en MariaBd" + myex.Message;
+            }
+            catch (Exception ex)
+            {
+                res = false;
+                BD.BD_ERROR = "Error general al insertar" + ex.Message;
+            }
+            finally
+            {
+                conMysql.Close();
+            }
+            //Excepciones
+
+            //retornar valor de verificación
             return res;
         }
 
-        public override bool updateUsers(string name, string last_name, string email, string curp, string password)
+        public override List<List<object>> read(List<object> fieldList,string table, string search)
         {
+            List<List<object>> lista = new List<List<object>>();
+
+            
+            
+            
+            //TRY
+            try
+            {
+                //conectarse
+                conMysql = new MySqlConnection(this.conectionString);
+                this.conexion();
+                //creacion de query
+                string query = $"SELECT * FROM {table} WHERE ";
+                foreach (object campo in fieldList) 
+                {
+                    query += $"{campo} LIKE '%{search}%' OR ";
+                }
+                //query listo
+                query = query.Remove(query.Length - 3);
+
+                //query
+                
+            }
+            catch (MySqlException myex)
+            {
+
+            }
+            catch (IOException ioex)
+            {
+
+            }
+            catch (Exception ex) 
+            {
+            
+            }
             throw new NotImplementedException();
         }
 
-        public override bool UpdateServices(string service_name, Enum service_type, double cost, string car, string license_plate, string serial_number)
+        public override bool update(string table, List<object> fieldList, List<object> data, int id)
         {
-            throw new NotImplementedException();
+            //var de verificación
+            bool res = false;
+            //TryCatch
+            try
+            {
+                //abrir conexion
+                this.conMysql = new MySqlConnection(this.conectionString);
+                this.conexion();
+                //creando el query de las listas
+                string updateSentencia = "";
+
+                for (int i = 0; i < fieldList.Count; i++)
+                {
+                    updateSentencia += $"{fieldList[i]}=+{data[i]}, ";
+                }
+                updateSentencia = updateSentencia.Remove(updateSentencia.Length - 2);
+                
+
+                //crearQUery
+                string query = $"UPDATE {table} SET ({updateSentencia}) WHERE id={id}";
+                //Conectar Query a Sentencia INSERT
+                comMyslq = new MySqlCommand(query, conMysql);
+                //Ejecutar Query
+                int rows = comMyslq.ExecuteNonQuery();
+                //cambiar valor de retorno pará confirmación de insercción correcta
+                if (rows == 1)
+                {
+                    res = true;
+                }
+                {
+                    BD.BD_ERROR = "ERROR EN INSERTAR MARIA DB";
+                }
+
+            }
+            catch (MySqlException myex)
+            {
+                res = false;
+                BD.BD_ERROR = "Error de mysql al insertar en MariaBd" + myex.Message;
+            }
+            catch (Exception ex)
+            {
+                res = false;
+                BD.BD_ERROR = "Error general al insertar" + ex.Message;
+            }
+            finally
+            {
+                conMysql.Close();
+            }
+            //Excepciones
+
+            //retornar valor de verificación
+            return res;
         }
 
-        public override List<List<string>> read(string table, string search)
-        {
-            throw new NotImplementedException();
-        }
 
-        public override List<List<string>> Read(string id)
-        {
-            throw new NotImplementedException();
-        }
 
-        public override bool delete(string table, string id)
-        {
-            throw new NotImplementedException();
-        }
+
+
+
 
 
         //CONSTRUCTOR

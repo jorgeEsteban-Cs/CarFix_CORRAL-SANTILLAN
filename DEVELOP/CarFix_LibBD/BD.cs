@@ -32,21 +32,19 @@ namespace CarFix_LibBD
         public abstract bool  login(string email, string password);
 
         //----insert metodo abstracto sobrecargado, un metodo para update Usuarios y otro para Servicios_de_mantenimiento
-        public abstract bool insertUsers(string name, string last_name, string email, string cell_phone, string curp, string password);
-        public abstract bool InsertService(string service_name, Enum service_type, DateTime fecha, double cost, string car, string license_plate, string serial_number, int id_user);
-
-        //---update metodo abstracto con sobrecarga, un metodo para update Usuarios y otro para Servicios_de_mantenimiento
-        public abstract bool updateUsers(string name, string last_name, string email,string curp, string password);
-        public abstract bool UpdateServices(string service_name, Enum service_type, double cost, string car, string license_plate, string serial_number);
+        public abstract bool insert(string table, List<object> fieldList, List<object> data);
 
         //---delete metodo abstracto
-        public abstract bool delete(string table, string id);
+        public abstract bool delete(string table, int id);
+
+        //----UPDATE
+        public abstract bool update(string table, List<object> fieldList, List<object> data, int id);
 
 
         //---read metodo abstracto
-        public abstract List<List<string>>read(string table, string search);
+        public abstract List<List<object>>read(List<object> fieldList, string table, string search);
         //--read metodo abstracto para busqueda con inner join con id_client FK id.usuario
-        public abstract List<List<string>> Read(string id);
+
 
 
 

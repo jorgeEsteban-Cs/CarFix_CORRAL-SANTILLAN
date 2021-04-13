@@ -26,7 +26,7 @@ namespace CarFix_UI
             try 
             {
                 
-                userAdd.insert(textBox_user_Name.Text.ToString(), textBox_user_lastName.Text.ToString(), textBox_email.Text.ToString(), textBox_celular.Text.ToString(), textBox_curp.Text.ToString(), textBox_password.Text.ToString());
+                userAdd.insert();
                 MessageBox.Show("Agregado Correctamente");
 
             }

@@ -300,6 +300,7 @@ namespace CarFix
             this.button_modificar_user.TabIndex = 7;
             this.button_modificar_user.Text = "Modificar";
             this.button_modificar_user.UseVisualStyleBackColor = false;
+            this.button_modificar_user.Click += new System.EventHandler(this.button_modificar_user_Click);
             // 
             // button_nuevo_user
             // 
