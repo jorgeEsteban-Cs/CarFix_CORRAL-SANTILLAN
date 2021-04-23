@@ -36,7 +36,6 @@ namespace CarFix
             this.pictureBox_CarFixIcon_title = new System.Windows.Forms.PictureBox();
             this.pictureBoxExit = new System.Windows.Forms.PictureBox();
             this.panel_sideBar_users = new System.Windows.Forms.Panel();
-            this.menu_users_btn = new System.Windows.Forms.Button();
             this.panel_user_info = new System.Windows.Forms.Panel();
             this.label_apellido_user = new System.Windows.Forms.Label();
             this.label_name_user = new System.Windows.Forms.Label();
@@ -52,6 +51,14 @@ namespace CarFix
             this.button_modificar_user = new System.Windows.Forms.Button();
             this.button_nuevo_user = new System.Windows.Forms.Button();
             this.dataGridView_users_searched = new System.Windows.Forms.DataGridView();
+            this.mySqlCommand1 = new MySql.Data.MySqlClient.MySqlCommand();
+            this.button_servicios_FRM = new System.Windows.Forms.Button();
+            this.id_user = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre_user = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.apellido_user = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.email_user = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.culular = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.curp_user = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel_title_users.SuspendLayout();
             this.titleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_CarFixIcon_title)).BeginInit();
@@ -120,36 +127,17 @@ namespace CarFix
             this.pictureBoxExit.TabIndex = 1;
             this.pictureBoxExit.TabStop = false;
             this.pictureBoxExit.Click += new System.EventHandler(this.pictureBoxExit_Click);
-            this.pictureBoxExit.MouseLeave += new System.EventHandler(this.pictureBoxExit_MouseLeave);
-            this.pictureBoxExit.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBoxExit_MouseMove);
             // 
             // panel_sideBar_users
             // 
             this.panel_sideBar_users.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(65)))), ((int)(((byte)(92)))));
-            this.panel_sideBar_users.Controls.Add(this.menu_users_btn);
+            this.panel_sideBar_users.Controls.Add(this.button_servicios_FRM);
             this.panel_sideBar_users.Controls.Add(this.panel_user_info);
             this.panel_sideBar_users.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel_sideBar_users.Location = new System.Drawing.Point(0, 60);
             this.panel_sideBar_users.Name = "panel_sideBar_users";
             this.panel_sideBar_users.Size = new System.Drawing.Size(200, 728);
             this.panel_sideBar_users.TabIndex = 1;
-            // 
-            // menu_users_btn
-            // 
-            this.menu_users_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(65)))), ((int)(((byte)(92)))));
-            this.menu_users_btn.Dock = System.Windows.Forms.DockStyle.Top;
-            this.menu_users_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
-            this.menu_users_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.menu_users_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.menu_users_btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.menu_users_btn.ImageKey = "(ninguno)";
-            this.menu_users_btn.Location = new System.Drawing.Point(0, 250);
-            this.menu_users_btn.Name = "menu_users_btn";
-            this.menu_users_btn.Size = new System.Drawing.Size(200, 46);
-            this.menu_users_btn.TabIndex = 1;
-            this.menu_users_btn.Text = "Menu";
-            this.menu_users_btn.UseVisualStyleBackColor = false;
-            this.menu_users_btn.Click += new System.EventHandler(this.menu_users_btn_Click);
             // 
             // panel_user_info
             // 
@@ -242,6 +230,7 @@ namespace CarFix
             this.button_search_user.TabIndex = 4;
             this.button_search_user.Text = "Buscar";
             this.button_search_user.UseVisualStyleBackColor = false;
+            this.button_search_user.Click += new System.EventHandler(this.button_search_user_Click);
             // 
             // textBox_search_users
             // 
@@ -274,7 +263,7 @@ namespace CarFix
             this.panel_grid_buttons_users.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_grid_buttons_users.Location = new System.Drawing.Point(200, 315);
             this.panel_grid_buttons_users.Name = "panel_grid_buttons_users";
-            this.panel_grid_buttons_users.Size = new System.Drawing.Size(1186, 478);
+            this.panel_grid_buttons_users.Size = new System.Drawing.Size(1186, 473);
             this.panel_grid_buttons_users.TabIndex = 3;
             // 
             // button_eliminar_user
@@ -288,6 +277,7 @@ namespace CarFix
             this.button_eliminar_user.TabIndex = 8;
             this.button_eliminar_user.Text = "Eliminar";
             this.button_eliminar_user.UseVisualStyleBackColor = false;
+            this.button_eliminar_user.Click += new System.EventHandler(this.button_eliminar_user_Click);
             // 
             // button_modificar_user
             // 
@@ -317,13 +307,84 @@ namespace CarFix
             // 
             // dataGridView_users_searched
             // 
+            this.dataGridView_users_searched.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView_users_searched.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
             this.dataGridView_users_searched.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
             this.dataGridView_users_searched.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_users_searched.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id_user,
+            this.nombre_user,
+            this.apellido_user,
+            this.email_user,
+            this.culular,
+            this.curp_user});
             this.dataGridView_users_searched.GridColor = System.Drawing.Color.Black;
-            this.dataGridView_users_searched.Location = new System.Drawing.Point(54, 32);
+            this.dataGridView_users_searched.Location = new System.Drawing.Point(54, 44);
             this.dataGridView_users_searched.Name = "dataGridView_users_searched";
             this.dataGridView_users_searched.Size = new System.Drawing.Size(1086, 333);
             this.dataGridView_users_searched.TabIndex = 6;
+            this.dataGridView_users_searched.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_users_searched_CellClick);
+            this.dataGridView_users_searched.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_users_searched_CellContentClick);
+            // 
+            // mySqlCommand1
+            // 
+            this.mySqlCommand1.CacheAge = 0;
+            this.mySqlCommand1.Connection = null;
+            this.mySqlCommand1.EnableCaching = false;
+            this.mySqlCommand1.Transaction = null;
+            // 
+            // button_servicios_FRM
+            // 
+            this.button_servicios_FRM.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(65)))), ((int)(((byte)(92)))));
+            this.button_servicios_FRM.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button_servicios_FRM.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
+            this.button_servicios_FRM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_servicios_FRM.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_servicios_FRM.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_servicios_FRM.ImageKey = "(ninguno)";
+            this.button_servicios_FRM.Location = new System.Drawing.Point(0, 250);
+            this.button_servicios_FRM.Name = "button_servicios_FRM";
+            this.button_servicios_FRM.Size = new System.Drawing.Size(200, 46);
+            this.button_servicios_FRM.TabIndex = 2;
+            this.button_servicios_FRM.Text = "Servivios";
+            this.button_servicios_FRM.UseVisualStyleBackColor = false;
+            this.button_servicios_FRM.Click += new System.EventHandler(this.button_servicios_FRM_Click);
+            // 
+            // id_user
+            // 
+            this.id_user.HeaderText = "ID";
+            this.id_user.Name = "id_user";
+            this.id_user.ReadOnly = true;
+            // 
+            // nombre_user
+            // 
+            this.nombre_user.HeaderText = "Nombre";
+            this.nombre_user.Name = "nombre_user";
+            this.nombre_user.ReadOnly = true;
+            // 
+            // apellido_user
+            // 
+            this.apellido_user.HeaderText = "Apellidos";
+            this.apellido_user.Name = "apellido_user";
+            this.apellido_user.ReadOnly = true;
+            // 
+            // email_user
+            // 
+            this.email_user.HeaderText = "Email";
+            this.email_user.Name = "email_user";
+            this.email_user.ReadOnly = true;
+            // 
+            // culular
+            // 
+            this.culular.HeaderText = "CELULAR";
+            this.culular.Name = "culular";
+            this.culular.ReadOnly = true;
+            // 
+            // curp_user
+            // 
+            this.curp_user.HeaderText = "CURP";
+            this.curp_user.Name = "curp_user";
+            this.curp_user.ReadOnly = true;
             // 
             // Usuarios_FRM
             // 
@@ -373,7 +434,6 @@ namespace CarFix
         private System.Windows.Forms.Label CarFixTitleBar;
         private System.Windows.Forms.PictureBox pictureBox_CarFixIcon_title;
         private System.Windows.Forms.PictureBox pictureBoxExit;
-        private System.Windows.Forms.Button menu_users_btn;
         private System.Windows.Forms.Panel panel_search_users;
         private System.Windows.Forms.TextBox textBox_search_users;
         private System.Windows.Forms.DataGridView dataGridView_user_selected;
@@ -382,5 +442,13 @@ namespace CarFix
         private System.Windows.Forms.Button button_eliminar_user;
         private System.Windows.Forms.Button button_modificar_user;
         private System.Windows.Forms.Button button_nuevo_user;
+        private MySql.Data.MySqlClient.MySqlCommand mySqlCommand1;
+        private System.Windows.Forms.Button button_servicios_FRM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_user;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombre_user;
+        private System.Windows.Forms.DataGridViewTextBoxColumn apellido_user;
+        private System.Windows.Forms.DataGridViewTextBoxColumn email_user;
+        private System.Windows.Forms.DataGridViewTextBoxColumn culular;
+        private System.Windows.Forms.DataGridViewTextBoxColumn curp_user;
     }
 }

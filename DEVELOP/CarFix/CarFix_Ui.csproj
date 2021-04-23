@@ -92,6 +92,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Insert_sdmave_FRM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Insert_sdmave_FRM.Designer.cs">
+      <DependentUpon>Insert_sdmave_FRM.cs</DependentUpon>
+    </Compile>
     <Compile Include="Insert_user_FRM.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,28 +110,58 @@
     <Compile Include="Login_FRM.Designer.cs">
       <DependentUpon>Login_FRM.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modificar_Sdmave_FRM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modificar_Sdmave_FRM.Designer.cs">
+      <DependentUpon>Modificar_Sdmave_FRM.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modificar_user_FRM.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modificar_user_FRM.Designer.cs">
       <DependentUpon>Modificar_user_FRM.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pagar_Sdmave_FRM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pagar_Sdmave_FRM.Designer.cs">
+      <DependentUpon>Pagar_Sdmave_FRM.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Servicio_Mantenimiento_FRM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Servicio_Mantenimiento_FRM.Designer.cs">
+      <DependentUpon>Servicio_Mantenimiento_FRM.cs</DependentUpon>
+    </Compile>
     <Compile Include="Usuarios_FRM.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Usuarios_FRM.Designer.cs">
       <DependentUpon>Usuarios_FRM.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Insert_sdmave_FRM.resx">
+      <DependentUpon>Insert_sdmave_FRM.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Insert_user_FRM.resx">
       <DependentUpon>Insert_user_FRM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login_FRM.resx">
       <DependentUpon>Login_FRM.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modificar_Sdmave_FRM.resx">
+      <DependentUpon>Modificar_Sdmave_FRM.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modificar_user_FRM.resx">
       <DependentUpon>Modificar_user_FRM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pagar_Sdmave_FRM.resx">
+      <DependentUpon>Pagar_Sdmave_FRM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Servicio_Mantenimiento_FRM.resx">
+      <DependentUpon>Servicio_Mantenimiento_FRM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Usuarios_FRM.resx">
       <DependentUpon>Usuarios_FRM.cs</DependentUpon>

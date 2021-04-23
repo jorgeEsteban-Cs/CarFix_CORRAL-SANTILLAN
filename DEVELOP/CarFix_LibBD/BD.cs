@@ -24,6 +24,8 @@ namespace CarFix_LibBD
         //--Conexion
 
         public abstract bool conexion();
+        //ReadInner
+        public abstract bool readInner(int user_id);
 
         //desconexion
         public abstract bool desconexion();
@@ -44,6 +46,10 @@ namespace CarFix_LibBD
         //---read metodo abstracto
         public abstract List<List<object>>read(List<object> fieldList, string table, string search);
         //--read metodo abstracto para busqueda con inner join con id_client FK id.usuario
+
+        //metodo para pagar
+
+        public abstract double pagar(int id_servicio);
 
 
 

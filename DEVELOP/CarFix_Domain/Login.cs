@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CarFix_LibBD;
-
 namespace CarFix_Domain
 {
     public class Login
     {
-
+        //GUARDAR LOS DATOS del usuario que se logea EN STATICO; nombre, correo, id
+        //o un objeto de user
         public bool login(string email, string password)
         {
-
+            
             bool res = false;
 
             //iniciando el servidor

@@ -115,9 +115,9 @@ namespace CarFix
             this.login_panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(163)))), ((int)(((byte)(158)))));
             this.login_panel.Controls.Add(this.panel_Login_Components);
             this.login_panel.Controls.Add(this.pictureBox_CarFixIcon_Login);
-            this.login_panel.Location = new System.Drawing.Point(388, 116);
+            this.login_panel.Location = new System.Drawing.Point(360, 116);
             this.login_panel.Name = "login_panel";
-            this.login_panel.Size = new System.Drawing.Size(398, 480);
+            this.login_panel.Size = new System.Drawing.Size(433, 564);
             this.login_panel.TabIndex = 1;
             // 
             // panel_Login_Components
@@ -127,7 +127,7 @@ namespace CarFix
             this.panel_Login_Components.Controls.Add(this.textBox_Login_Usuario);
             this.panel_Login_Components.Controls.Add(this.label_Login_password);
             this.panel_Login_Components.Controls.Add(this.label_Login_User);
-            this.panel_Login_Components.Location = new System.Drawing.Point(75, 188);
+            this.panel_Login_Components.Location = new System.Drawing.Point(97, 218);
             this.panel_Login_Components.Name = "panel_Login_Components";
             this.panel_Login_Components.Size = new System.Drawing.Size(241, 250);
             this.panel_Login_Components.TabIndex = 3;
@@ -137,29 +137,31 @@ namespace CarFix
             this.btn_entrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(163)))), ((int)(((byte)(158)))));
             this.btn_entrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_entrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_entrar.Location = new System.Drawing.Point(78, 198);
+            this.btn_entrar.Location = new System.Drawing.Point(77, 197);
             this.btn_entrar.Name = "btn_entrar";
             this.btn_entrar.Size = new System.Drawing.Size(82, 32);
             this.btn_entrar.TabIndex = 5;
             this.btn_entrar.Text = "entrar";
             this.btn_entrar.UseVisualStyleBackColor = false;
             this.btn_entrar.Click += new System.EventHandler(this.btn_entrar_Click);
-            
             // 
             // textBox_Login_password
             // 
             this.textBox_Login_password.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(207)))), ((int)(((byte)(228)))));
-            this.textBox_Login_password.Location = new System.Drawing.Point(57, 160);
+            this.textBox_Login_password.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_Login_password.Location = new System.Drawing.Point(57, 159);
             this.textBox_Login_password.Name = "textBox_Login_password";
-            this.textBox_Login_password.Size = new System.Drawing.Size(130, 20);
+            this.textBox_Login_password.PasswordChar = '*';
+            this.textBox_Login_password.Size = new System.Drawing.Size(130, 26);
             this.textBox_Login_password.TabIndex = 4;
             // 
             // textBox_Login_Usuario
             // 
             this.textBox_Login_Usuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(207)))), ((int)(((byte)(228)))));
-            this.textBox_Login_Usuario.Location = new System.Drawing.Point(58, 66);
+            this.textBox_Login_Usuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_Login_Usuario.Location = new System.Drawing.Point(58, 65);
             this.textBox_Login_Usuario.Name = "textBox_Login_Usuario";
-            this.textBox_Login_Usuario.Size = new System.Drawing.Size(130, 20);
+            this.textBox_Login_Usuario.Size = new System.Drawing.Size(130, 26);
             this.textBox_Login_Usuario.TabIndex = 3;
             // 
             // label_Login_password
@@ -187,7 +189,7 @@ namespace CarFix
             // pictureBox_CarFixIcon_Login
             // 
             this.pictureBox_CarFixIcon_Login.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_CarFixIcon_Login.Image")));
-            this.pictureBox_CarFixIcon_Login.Location = new System.Drawing.Point(133, 54);
+            this.pictureBox_CarFixIcon_Login.Location = new System.Drawing.Point(147, 28);
             this.pictureBox_CarFixIcon_Login.Name = "pictureBox_CarFixIcon_Login";
             this.pictureBox_CarFixIcon_Login.Size = new System.Drawing.Size(128, 128);
             this.pictureBox_CarFixIcon_Login.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;

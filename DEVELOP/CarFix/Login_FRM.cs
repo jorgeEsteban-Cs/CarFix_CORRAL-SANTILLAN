@@ -64,6 +64,8 @@ namespace CarFix
                 menuEnter.Activate();
                 menuEnter.Show();
                 MessageBox.Show("Bienvenido");
+                this.Visible = false;
+                this.Enabled = false;
                 
             }
             else 

@@ -42,3 +42,7 @@ C:\Users\estte\Documents\CarFix3\CarFix_CORRAL-SANTILLAN\DEVELOP\CarFix\obj\Debu
 C:\Users\estte\Documents\CarFix3\CarFix_CORRAL-SANTILLAN\DEVELOP\CarFix\obj\Debug\CarFix_UI.pdb
 C:\Users\estte\Documents\CarFix3\CarFix_CORRAL-SANTILLAN\DEVELOP\CarFix\obj\Debug\CarFix_UI.Insert_user_FRM.resources
 C:\Users\estte\Documents\CarFix3\CarFix_CORRAL-SANTILLAN\DEVELOP\CarFix\obj\Debug\CarFix_UI.Modificar_user_FRM.resources
+C:\Users\estte\Documents\CarFix3\CarFix_CORRAL-SANTILLAN\DEVELOP\CarFix\obj\Debug\CarFix_UI.Servicio_Mantenimiento_FRM.resources
+C:\Users\estte\Documents\CarFix3\CarFix_CORRAL-SANTILLAN\DEVELOP\CarFix\obj\Debug\CarFix_UI.Insert_sdmave_FRM.resources
+C:\Users\estte\Documents\CarFix3\CarFix_CORRAL-SANTILLAN\DEVELOP\CarFix\obj\Debug\CarFix_UI.Modificar_Sdmave_FRM.resources
+C:\Users\estte\Documents\CarFix3\CarFix_CORRAL-SANTILLAN\DEVELOP\CarFix\obj\Debug\CarFix_UI.Pagar_Sdmave_FRM.resources

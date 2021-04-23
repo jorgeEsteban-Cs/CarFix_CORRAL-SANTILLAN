@@ -161,21 +161,22 @@ namespace CarFix_LibBD
             //TryCatch
             try
             {
+
                 //abrir conexion
                 this.conMysql = new MySqlConnection(this.conectionString);
                 this.conexion();
                 //creando el query de las listas
                 string campos = "";
                 string valores = "";
-                foreach (object campo in fieldList) 
+                foreach (object campo in fieldList)
                 {
-                    campos += (string)campo+", ";
+                    campos += campo + ", ";
                 }
-                foreach (object valor in data) 
+                foreach (object valor in data)
                 {
-                    valores += (string)valor + ", "; 
+                    valores += valor + ", ";
                 }
-                campos = campos.Remove(campos.Length -2);
+                campos = campos.Remove(campos.Length - 2);
                 valores = valores.Remove(valores.Length - 2);
 
 
@@ -200,12 +201,16 @@ namespace CarFix_LibBD
                 res = false;
                 BD.BD_ERROR = "Error de mysql al insertar en MariaBd" + myex.Message;
             }
+            catch (IOException ioex) 
+            {
+                BD.BD_ERROR = "Error io " + ioex.Message;
+            }
             catch (Exception ex)
             {
                 res = false;
                 BD.BD_ERROR = "Error general al insertar" + ex.Message;
             }
-            finally 
+            finally
             {
                 conMysql.Close();
             }
@@ -226,11 +231,11 @@ namespace CarFix_LibBD
                 this.conMysql = new MySqlConnection(this.conectionString);
                 this.conexion();
                 //creando el query de las listas
-                
+
 
 
                 //crearQUery
-                string query = $"DELETE FROM {table} WHERE ({id})";
+                string query = $"DELETE FROM {table} WHERE id={id}";
                 //Conectar Query a Sentencia INSERT
                 comMyslq = new MySqlCommand(query, conMysql);
                 //Ejecutar Query
@@ -241,19 +246,23 @@ namespace CarFix_LibBD
                     res = true;
                 }
                 {
-                    BD.BD_ERROR = "ERROR EN INSERTAR MARIA DB";
+                    BD.BD_ERROR = "ERROR Borrar MARIA DB";
                 }
 
             }
             catch (MySqlException myex)
             {
                 res = false;
-                BD.BD_ERROR = "Error de mysql al insertar en MariaBd" + myex.Message;
+                BD.BD_ERROR = "Error de mysql al borrar en MariaBd" + myex.Message;
+            }
+            catch (IOException ioex) 
+            {
+                BD.BD_ERROR = "Error de borrar io " + ioex.Message;
             }
             catch (Exception ex)
             {
                 res = false;
-                BD.BD_ERROR = "Error general al insertar" + ex.Message;
+                BD.BD_ERROR = "Error general al borrar" + ex.Message;
             }
             finally
             {
@@ -265,46 +274,83 @@ namespace CarFix_LibBD
             return res;
         }
 
+        //read
         public override List<List<object>> read(List<object> fieldList,string table, string search)
         {
+
+            //CREACION de lista de lista de objetos
             List<List<object>> lista = new List<List<object>>();
 
-            
-            
-            
+            /*
+              CAMBIAR-la query que solo busque por id y nombre o solo id o nombre
+             */
+
+
             //TRY
             try
             {
                 //conectarse
                 conMysql = new MySqlConnection(this.conectionString);
                 this.conexion();
-                //creacion de query
-                string query = $"SELECT * FROM {table} WHERE ";
-                foreach (object campo in fieldList) 
-                {
-                    query += $"{campo} LIKE '%{search}%' OR ";
-                }
-                //query listo
-                query = query.Remove(query.Length - 3);
+                //creacion de string a los campos a consultar
+                string query = $"SELECT * FROM {table} WHERE id={search}";
+                
+                //Ejecutando query
+                comMyslq = new MySqlCommand(query, conMysql);
+                reader = comMyslq.ExecuteReader();
+                //validando si tiene resultados
 
-                //query
+
+
+
+                if (reader.HasRows)
+                {
+                    List<object> row = new List<object>();
+                    //meter los datos obtenidos en una lista
+                    while (reader.Read())
+                    {
+
+                        for (int i = 0; i < fieldList.Count; i++)
+                        {
+                            row.Add(reader.GetValue(i));
+                            
+                        }
+                        lista.Add(row);
+
+                    }
+
+                    return lista;
+                }
+                else 
+                {
+                    BD.BD_ERROR = "No se encontro ningun resultado";
+                }
+
+
+                
                 
             }
             catch (MySqlException myex)
             {
-
+                BD.BD_ERROR = "Error de Entradas a Mysql" + myex.Message;
             }
             catch (IOException ioex)
             {
-
+                BD.BD_ERROR = "Error de IO  Mysql" + ioex.Message;
             }
             catch (Exception ex) 
             {
-            
+                BD.BD_ERROR = "Error General" + ex.Message;
             }
-            throw new NotImplementedException();
+            finally 
+            {
+                conMysql.Close();
+            }
+            return lista;
         }
 
+
+        //update 
         public override bool update(string table, List<object> fieldList, List<object> data, int id)
         {
             //var de verificación
@@ -320,13 +366,13 @@ namespace CarFix_LibBD
 
                 for (int i = 0; i < fieldList.Count; i++)
                 {
-                    updateSentencia += $"{fieldList[i]}=+{data[i]}, ";
+                    updateSentencia += $"{fieldList[i]}={data[i]}, ";
                 }
                 updateSentencia = updateSentencia.Remove(updateSentencia.Length - 2);
                 
 
                 //crearQUery
-                string query = $"UPDATE {table} SET ({updateSentencia}) WHERE id={id}";
+                string query = $"UPDATE {table} SET {updateSentencia} WHERE id={id}";
                 //Conectar Query a Sentencia INSERT
                 comMyslq = new MySqlCommand(query, conMysql);
                 //Ejecutar Query
@@ -359,6 +405,103 @@ namespace CarFix_LibBD
 
             //retornar valor de verificación
             return res;
+        }
+
+        //metodo para saber si el usuario existe
+        public override bool readInner(int user_id)
+        {
+            //definir una var de resultado
+            bool res = false;
+            //bloque trycatch
+            try
+            {
+                //abrir con
+                this.conMysql = new MySqlConnection(this.conectionString);
+                this.conexion();
+                //crear query
+                string query = $"SELECT * from users WHERE id={user_id}";
+                //conectar el query con los datos sentencia SELECT
+                comMyslq = new MySqlCommand(query, conMysql);
+                //Ejecutar sentencia
+                reader = comMyslq.ExecuteReader();
+                //Validar
+                if (reader.HasRows)
+                {
+                    //cambiar var resultado 
+                    res = true;
+                }
+                else 
+                {
+                    BD.BD_ERROR = "Usuario No encontrado";
+                }
+
+               
+            }
+            
+            //excepciones
+            catch (MySqlException myex)
+            {
+                BD.BD_ERROR = "Error al buscar usuario en la BD" + myex.Message;
+
+            }
+            catch (Exception ex)
+            {
+                BD.BD_ERROR = "Error al buscar usuario en la BD" + ex.Message;
+
+            }
+            finally
+            {
+                conMysql.Close();
+            }
+            return res;
+        }
+
+        public override double pagar(int id_servicio)
+        {
+            //definir una var de resultado
+            double costo=0;
+            //bloque trycatch
+            try
+            {
+                //abrir con
+                this.conMysql = new MySqlConnection(this.conectionString);
+                this.conexion();
+                //crear query
+                string query = $"SELECT cost FROM sdmaves WHERE id={id_servicio}";
+                //conectar el query con los datos sentencia SELECT
+                comMyslq = new MySqlCommand(query, conMysql);
+                //Ejecutar sentencia
+                reader = comMyslq.ExecuteReader();
+                //Validar
+                if (reader.HasRows)
+                {
+                    //cambiar var resultado 
+                    while (reader.Read()) 
+                    {
+                        costo = reader.GetDouble(0);
+                    }
+                   
+                }
+
+            }
+            //excepciones
+            catch (MySqlException myex)
+            {
+                BD.BD_ERROR = "Error al buscar usuario en la BD" + myex.Message;
+
+            }
+            catch (Exception ex)
+            {
+                BD.BD_ERROR = "Error al buscar usuario en la BD" + ex.Message;
+
+            }
+            finally
+            {
+                conMysql.Close();
+            }
+
+            return costo;
+
         }
 
 

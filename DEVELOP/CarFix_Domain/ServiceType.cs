@@ -5,6 +5,8 @@
         GENERAL,
         CAMBIO_DE_ACEITE,
         BALANCEO,
-        ALINEACIÓN
+        ALINEACIÓN,
+        CUERPO_DE_ACELERACION,
+        SUSPENSION
     }
 }

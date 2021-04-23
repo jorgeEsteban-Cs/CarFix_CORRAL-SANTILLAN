@@ -85,6 +85,7 @@ namespace CarFix_UI
             this.button_cancelar_modificar_user.TabIndex = 1;
             this.button_cancelar_modificar_user.Text = "Cancelar";
             this.button_cancelar_modificar_user.UseVisualStyleBackColor = false;
+            this.button_cancelar_modificar_user.Click += new System.EventHandler(this.button_cancelar_modificar_user_Click);
             // 
             // button_modificar_user
             // 
@@ -94,8 +95,9 @@ namespace CarFix_UI
             this.button_modificar_user.Name = "button_modificar_user";
             this.button_modificar_user.Size = new System.Drawing.Size(75, 23);
             this.button_modificar_user.TabIndex = 0;
-            this.button_modificar_user.Text = "Agregar";
+            this.button_modificar_user.Text = "Modificar";
             this.button_modificar_user.UseVisualStyleBackColor = false;
+            this.button_modificar_user.Click += new System.EventHandler(this.button_modificar_user_Click);
             // 
             // panel1
             // 
@@ -232,7 +234,7 @@ namespace CarFix_UI
             this.title_panel.Dock = System.Windows.Forms.DockStyle.Top;
             this.title_panel.Location = new System.Drawing.Point(0, 0);
             this.title_panel.Name = "title_panel";
-            this.title_panel.Size = new System.Drawing.Size(384, 100);
+            this.title_panel.Size = new System.Drawing.Size(382, 100);
             this.title_panel.TabIndex = 3;
             // 
             // title_label
@@ -252,13 +254,13 @@ namespace CarFix_UI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 511);
+            this.ClientSize = new System.Drawing.Size(382, 511);
             this.Controls.Add(this.panel_buttons_user_add);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.title_panel);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Modificar_user_FRM";
-            this.Text = "Modificar_user_FRM";
+            this.Text = "Modificar Usuario";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Icon_title)).EndInit();
             this.panel_buttons_user_add.ResumeLayout(false);
             this.panel1.ResumeLayout(false);

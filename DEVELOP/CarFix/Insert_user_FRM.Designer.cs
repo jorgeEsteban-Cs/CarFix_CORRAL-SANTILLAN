@@ -31,24 +31,24 @@ namespace CarFix_UI
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Insert_user_FRM));
             this.title_panel = new System.Windows.Forms.Panel();
-            this.pictureBox_Icon_title = new System.Windows.Forms.PictureBox();
             this.title_label = new System.Windows.Forms.Label();
+            this.pictureBox_Icon_title = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.textBox_user_Name = new System.Windows.Forms.TextBox();
-            this.label_name_user = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox_user_lastName = new System.Windows.Forms.TextBox();
-            this.label_email = new System.Windows.Forms.Label();
-            this.textBox_email = new System.Windows.Forms.TextBox();
-            this.label_celular = new System.Windows.Forms.Label();
-            this.textBox_celular = new System.Windows.Forms.TextBox();
-            this.label_curp = new System.Windows.Forms.Label();
-            this.textBox_curp = new System.Windows.Forms.TextBox();
             this.label_password = new System.Windows.Forms.Label();
             this.textBox_password = new System.Windows.Forms.TextBox();
+            this.label_curp = new System.Windows.Forms.Label();
+            this.textBox_curp = new System.Windows.Forms.TextBox();
+            this.label_celular = new System.Windows.Forms.Label();
+            this.textBox_celular = new System.Windows.Forms.TextBox();
+            this.label_email = new System.Windows.Forms.Label();
+            this.textBox_email = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox_user_lastName = new System.Windows.Forms.TextBox();
+            this.label_name_user = new System.Windows.Forms.Label();
+            this.textBox_user_Name = new System.Windows.Forms.TextBox();
             this.panel_buttons_user_add = new System.Windows.Forms.Panel();
-            this.button_agregar_user = new System.Windows.Forms.Button();
             this.button_cancelar_agregar_user = new System.Windows.Forms.Button();
+            this.button_agregar_user = new System.Windows.Forms.Button();
             this.title_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Icon_title)).BeginInit();
             this.panel1.SuspendLayout();
@@ -63,19 +63,8 @@ namespace CarFix_UI
             this.title_panel.Dock = System.Windows.Forms.DockStyle.Top;
             this.title_panel.Location = new System.Drawing.Point(0, 0);
             this.title_panel.Name = "title_panel";
-            this.title_panel.Size = new System.Drawing.Size(400, 100);
+            this.title_panel.Size = new System.Drawing.Size(381, 100);
             this.title_panel.TabIndex = 0;
-            // 
-            // pictureBox_Icon_title
-            // 
-            this.pictureBox_Icon_title.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBox_Icon_title.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_Icon_title.Image")));
-            this.pictureBox_Icon_title.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox_Icon_title.Name = "pictureBox_Icon_title";
-            this.pictureBox_Icon_title.Size = new System.Drawing.Size(100, 100);
-            this.pictureBox_Icon_title.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox_Icon_title.TabIndex = 0;
-            this.pictureBox_Icon_title.TabStop = false;
             // 
             // title_label
             // 
@@ -89,6 +78,17 @@ namespace CarFix_UI
             this.title_label.TabIndex = 1;
             this.title_label.Text = "CarFix";
             this.title_label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // pictureBox_Icon_title
+            // 
+            this.pictureBox_Icon_title.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBox_Icon_title.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_Icon_title.Image")));
+            this.pictureBox_Icon_title.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox_Icon_title.Name = "pictureBox_Icon_title";
+            this.pictureBox_Icon_title.Size = new System.Drawing.Size(100, 100);
+            this.pictureBox_Icon_title.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox_Icon_title.TabIndex = 0;
+            this.pictureBox_Icon_title.TabStop = false;
             // 
             // panel1
             // 
@@ -109,77 +109,23 @@ namespace CarFix_UI
             this.panel1.Size = new System.Drawing.Size(237, 272);
             this.panel1.TabIndex = 1;
             // 
-            // textBox_user_Name
+            // label_password
             // 
-            this.textBox_user_Name.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
-            this.textBox_user_Name.Location = new System.Drawing.Point(88, 33);
-            this.textBox_user_Name.Name = "textBox_user_Name";
-            this.textBox_user_Name.Size = new System.Drawing.Size(100, 20);
-            this.textBox_user_Name.TabIndex = 0;
+            this.label_password.AutoSize = true;
+            this.label_password.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_password.Location = new System.Drawing.Point(20, 210);
+            this.label_password.Name = "label_password";
+            this.label_password.Size = new System.Drawing.Size(68, 17);
+            this.label_password.TabIndex = 11;
+            this.label_password.Text = "password";
             // 
-            // label_name_user
+            // textBox_password
             // 
-            this.label_name_user.AutoSize = true;
-            this.label_name_user.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_name_user.Location = new System.Drawing.Point(27, 34);
-            this.label_name_user.Name = "label_name_user";
-            this.label_name_user.Size = new System.Drawing.Size(58, 17);
-            this.label_name_user.TabIndex = 1;
-            this.label_name_user.Text = "Nombre";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(20, 72);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 17);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Apellidos";
-            // 
-            // textBox_user_lastName
-            // 
-            this.textBox_user_lastName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
-            this.textBox_user_lastName.Location = new System.Drawing.Point(88, 69);
-            this.textBox_user_lastName.Name = "textBox_user_lastName";
-            this.textBox_user_lastName.Size = new System.Drawing.Size(100, 20);
-            this.textBox_user_lastName.TabIndex = 2;
-            // 
-            // label_email
-            // 
-            this.label_email.AutoSize = true;
-            this.label_email.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_email.Location = new System.Drawing.Point(20, 103);
-            this.label_email.Name = "label_email";
-            this.label_email.Size = new System.Drawing.Size(41, 17);
-            this.label_email.TabIndex = 5;
-            this.label_email.Text = "email";
-            // 
-            // textBox_email
-            // 
-            this.textBox_email.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
-            this.textBox_email.Location = new System.Drawing.Point(88, 100);
-            this.textBox_email.Name = "textBox_email";
-            this.textBox_email.Size = new System.Drawing.Size(100, 20);
-            this.textBox_email.TabIndex = 4;
-            // 
-            // label_celular
-            // 
-            this.label_celular.AutoSize = true;
-            this.label_celular.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_celular.Location = new System.Drawing.Point(20, 137);
-            this.label_celular.Name = "label_celular";
-            this.label_celular.Size = new System.Drawing.Size(50, 17);
-            this.label_celular.TabIndex = 7;
-            this.label_celular.Text = "celular";
-            // 
-            // textBox_celular
-            // 
-            this.textBox_celular.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
-            this.textBox_celular.Location = new System.Drawing.Point(88, 134);
-            this.textBox_celular.Name = "textBox_celular";
-            this.textBox_celular.Size = new System.Drawing.Size(100, 20);
-            this.textBox_celular.TabIndex = 6;
+            this.textBox_password.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
+            this.textBox_password.Location = new System.Drawing.Point(88, 207);
+            this.textBox_password.Name = "textBox_password";
+            this.textBox_password.Size = new System.Drawing.Size(100, 20);
+            this.textBox_password.TabIndex = 10;
             // 
             // label_curp
             // 
@@ -199,23 +145,77 @@ namespace CarFix_UI
             this.textBox_curp.Size = new System.Drawing.Size(100, 20);
             this.textBox_curp.TabIndex = 8;
             // 
-            // label_password
+            // label_celular
             // 
-            this.label_password.AutoSize = true;
-            this.label_password.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_password.Location = new System.Drawing.Point(20, 210);
-            this.label_password.Name = "label_password";
-            this.label_password.Size = new System.Drawing.Size(68, 17);
-            this.label_password.TabIndex = 11;
-            this.label_password.Text = "password";
+            this.label_celular.AutoSize = true;
+            this.label_celular.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_celular.Location = new System.Drawing.Point(20, 137);
+            this.label_celular.Name = "label_celular";
+            this.label_celular.Size = new System.Drawing.Size(50, 17);
+            this.label_celular.TabIndex = 7;
+            this.label_celular.Text = "celular";
             // 
-            // textBox_password
+            // textBox_celular
             // 
-            this.textBox_password.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
-            this.textBox_password.Location = new System.Drawing.Point(88, 207);
-            this.textBox_password.Name = "textBox_password";
-            this.textBox_password.Size = new System.Drawing.Size(100, 20);
-            this.textBox_password.TabIndex = 10;
+            this.textBox_celular.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
+            this.textBox_celular.Location = new System.Drawing.Point(88, 134);
+            this.textBox_celular.Name = "textBox_celular";
+            this.textBox_celular.Size = new System.Drawing.Size(100, 20);
+            this.textBox_celular.TabIndex = 6;
+            // 
+            // label_email
+            // 
+            this.label_email.AutoSize = true;
+            this.label_email.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_email.Location = new System.Drawing.Point(20, 103);
+            this.label_email.Name = "label_email";
+            this.label_email.Size = new System.Drawing.Size(41, 17);
+            this.label_email.TabIndex = 5;
+            this.label_email.Text = "email";
+            // 
+            // textBox_email
+            // 
+            this.textBox_email.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
+            this.textBox_email.Location = new System.Drawing.Point(88, 100);
+            this.textBox_email.Name = "textBox_email";
+            this.textBox_email.Size = new System.Drawing.Size(100, 20);
+            this.textBox_email.TabIndex = 4;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(20, 72);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 17);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Apellidos";
+            // 
+            // textBox_user_lastName
+            // 
+            this.textBox_user_lastName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
+            this.textBox_user_lastName.Location = new System.Drawing.Point(88, 69);
+            this.textBox_user_lastName.Name = "textBox_user_lastName";
+            this.textBox_user_lastName.Size = new System.Drawing.Size(100, 20);
+            this.textBox_user_lastName.TabIndex = 2;
+            // 
+            // label_name_user
+            // 
+            this.label_name_user.AutoSize = true;
+            this.label_name_user.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_name_user.Location = new System.Drawing.Point(27, 34);
+            this.label_name_user.Name = "label_name_user";
+            this.label_name_user.Size = new System.Drawing.Size(58, 17);
+            this.label_name_user.TabIndex = 1;
+            this.label_name_user.Text = "Nombre";
+            // 
+            // textBox_user_Name
+            // 
+            this.textBox_user_Name.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
+            this.textBox_user_Name.Location = new System.Drawing.Point(88, 33);
+            this.textBox_user_Name.Name = "textBox_user_Name";
+            this.textBox_user_Name.Size = new System.Drawing.Size(100, 20);
+            this.textBox_user_Name.TabIndex = 0;
             // 
             // panel_buttons_user_add
             // 
@@ -225,18 +225,6 @@ namespace CarFix_UI
             this.panel_buttons_user_add.Name = "panel_buttons_user_add";
             this.panel_buttons_user_add.Size = new System.Drawing.Size(200, 100);
             this.panel_buttons_user_add.TabIndex = 2;
-            // 
-            // button_agregar_user
-            // 
-            this.button_agregar_user.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(186)))), ((int)(((byte)(73)))));
-            this.button_agregar_user.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_agregar_user.Location = new System.Drawing.Point(0, 38);
-            this.button_agregar_user.Name = "button_agregar_user";
-            this.button_agregar_user.Size = new System.Drawing.Size(75, 23);
-            this.button_agregar_user.TabIndex = 0;
-            this.button_agregar_user.Text = "Agregar";
-            this.button_agregar_user.UseVisualStyleBackColor = false;
-            this.button_agregar_user.Click += new System.EventHandler(this.button_agregar_user_Click);
             // 
             // button_cancelar_agregar_user
             // 
@@ -250,17 +238,29 @@ namespace CarFix_UI
             this.button_cancelar_agregar_user.UseVisualStyleBackColor = false;
             this.button_cancelar_agregar_user.Click += new System.EventHandler(this.button_cancelar_agregar_user_Click);
             // 
+            // button_agregar_user
+            // 
+            this.button_agregar_user.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(186)))), ((int)(((byte)(73)))));
+            this.button_agregar_user.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_agregar_user.Location = new System.Drawing.Point(0, 38);
+            this.button_agregar_user.Name = "button_agregar_user";
+            this.button_agregar_user.Size = new System.Drawing.Size(75, 23);
+            this.button_agregar_user.TabIndex = 0;
+            this.button_agregar_user.Text = "Agregar";
+            this.button_agregar_user.UseVisualStyleBackColor = false;
+            this.button_agregar_user.Click += new System.EventHandler(this.button_agregar_user_Click);
+            // 
             // Insert_user_FRM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(400, 550);
+            this.ClientSize = new System.Drawing.Size(381, 529);
             this.Controls.Add(this.panel_buttons_user_add);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.title_panel);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Insert_user_FRM";
-            this.Text = "insert_user_FRM";
+            this.Text = "Nuevo Usuario";
             this.title_panel.ResumeLayout(false);
             this.title_panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Icon_title)).EndInit();

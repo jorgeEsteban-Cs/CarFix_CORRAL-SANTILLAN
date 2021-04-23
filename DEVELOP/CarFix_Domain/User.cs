@@ -17,6 +17,7 @@ namespace CarFix_Domain
         private string _cellPhone;
         private string _curp;
         private string _password;
+        public static string ERROR;
 
         //LISTA DE CAMPOS para insertar y Modificar
         public List<object> fieldList = new List<object>()
@@ -32,34 +33,37 @@ namespace CarFix_Domain
         //lista de CAMPOS PARA BUSQUEDA
         public List<object> fieldListRead = new List<object>()
         {
+            "id",
             "name",
             "last_name",
             "email",
             "cell_phone",
             "curp"
+
+
         };
 
         public User(string name, string lastName, string email, string cellPhone, string curp, string password)
         {
-            Name = name;
-            LastName = lastName;
-            Email = email;
-            CellPhone = cellPhone;
-            Curp = curp;
-            Password = password;
+            this.Name = name;
+            this.LastName = lastName;
+            this.Email = email;
+            this.CellPhone = cellPhone;
+            this.Curp = curp;
+            this.Password = password;
         }
 
 
-
-        //Campos Encapsualdos
-        public string Name { get => _name; set => _name = "'" + value + "'"; }
-        public string LastName { get => _lastName; set => _lastName = "'" + value + "'"; }
-        public string Email { get => _email; set => _email = "'" + value + "'"; }
-        public string CellPhone { get => _cellPhone; set => _cellPhone = "'" + value + "'"; }
-        public string Curp { get => _curp; set => _curp = "'" + value + "'"; }
-        public string Password { get => _password; set => _password = "'" + value + "'"; }
-
         
+        //Campos Encapsualdos
+        public string Name { get => _name; set => _name =  value; }
+        public string LastName { get => _lastName; set => _lastName = value; }
+        public string Email { get => _email; set => _email = value; }
+        public string CellPhone { get => _cellPhone; set => _cellPhone =  value; }
+        public string Curp { get => _curp; set => _curp = value; }
+        public string Password { get => _password; set => _password =  value; }
+
+
 
         //METHODS.........................
 
@@ -78,8 +82,12 @@ namespace CarFix_Domain
         /// / it returns a boolean type to verify if the new user was correctly inseted.
         /// </returns>
         public bool insert()
-        { 
+        {
+            //variable de validación del metodo
             bool res = false;
+            bool isnull = false;
+
+            //intanciación de una lista que guarda los datos para insertar
             List<object> data = new List<object>()
             {
                 Name,
@@ -89,10 +97,54 @@ namespace CarFix_Domain
                 Curp,
                 Password
             };
-            BD mysql = new MariaBD("car_fix_bd", "root", "1234", "127.0.0.1", "3306");
-            mysql.insert("users", this.fieldList, data);
-            
+
+
+            //Validando si un dato es null si lo es no ejecuta este metodo y guarda un mensaje de error
+            foreach (object dato in data)
+            {
+
+                if (string.IsNullOrWhiteSpace((string)dato))
+                {
+                    isnull = true;
+                    break;
+                }
+                else 
+                {
+                    isnull = false;
+                }
+            }
+
+            //si vienen los datos llenos correctamente procede a mandar a mariaDB
+            if (isnull == false)
+            {
+                //poniendo comillas a datos que ocupan comillas
+                for (int i = 0; i<data.Count;i++) 
+                {
+                    data[i] = "'" + data[i] + "'";
+                
+                }
+
+                //instanciación de clase mariaBd para obtener conexion string y sus metodos de clase
+                BD mysql = new MariaBD("car_fix_bd", "root", "1234", "127.0.0.1", "3306");
+
+
+                //metodo insert de maraBD
+                res = mysql.insert("users", this.fieldList, data);
+                //validar res
+                if (res == false)
+                {
+                    User.ERROR = BD.BD_ERROR;
+                }
+
+            }
+            else 
+            {
+                User.ERROR = "Faltaron campos por llenar";
+            }
+
             return res;
+            
+            
         }
 
 
@@ -119,6 +171,7 @@ namespace CarFix_Domain
         public bool update(int id) 
         {
             bool res = false;
+            bool isnull = false;
             List<object> data = new List<object>()
             {
                 Name,
@@ -128,9 +181,40 @@ namespace CarFix_Domain
                 Curp,
                 Password
             };
-            BD mysql = new MariaBD("car_fix_bd", "root", "1234", "127.0.0.1", "3306");
-            mysql.update("users", this.fieldList, data, id);
+            foreach (object dato in data)
+            {
 
+                if (string.IsNullOrWhiteSpace((string)dato))
+                {
+                    isnull = true;
+                }
+                else 
+                {
+                    isnull = false;
+                }
+            }
+            if (isnull == false)
+            {
+                //poniendo comillas a datos que ocupan comillas
+                for (int i = 0; i < data.Count; i++)
+                {
+                    data[i] = "'" + data[i] + "'";
+
+                }
+
+                BD mysql = new MariaBD("car_fix_bd", "root", "1234", "127.0.0.1", "3306");
+                res = mysql.update("users", this.fieldList, data, id);
+                if (res == false)
+                {
+                    User.ERROR = BD.BD_ERROR;
+                }
+
+            }
+            else 
+            {
+                User.ERROR = "Faltaron campos por llenar";
+            }
+            
             
 
             return res;
@@ -147,22 +231,45 @@ namespace CarFix_Domain
             bool res = false;
 
             BD mysql = new MariaBD("car_fix_bd", "root", "1234", "127.0.0.1", "3306");
-            mysql.delete("users",id);
+            res = mysql.delete("users",id);
+            if (res == false) 
+            {
+                User.ERROR = BD.BD_ERROR;
+            }
             return res;
         
         }
 
 
-        public List<List<User>> read(string search) 
+        public List<List<object>> read(string search) 
         {
-            List<List<User>> users = new List<List<User>>();
+            List<List<object>> users = new List<List<object>>();
+            if (string.IsNullOrWhiteSpace((string)search))
+            {
+                User.ERROR = "Favor de llenar el campo de busqueda";
+            }
+            else 
+            {
+                
 
-            BD mysql = new MariaBD("car_fix_bd", "root", "1234", "127.0.0.1", "3306");
-            mysql.read(fieldListRead, "users", search);
+                BD mysql = new MariaBD("car_fix_bd", "root", "1234", "127.0.0.1", "3306");
+                users = mysql.read(fieldListRead, "users", search);
+                foreach (List<object> lista in users) 
+                {
+                    if (lista == null)
+                        User.ERROR = "No se encontro resultados";
+                }
 
+                User.ERROR = BD.BD_ERROR;
+            }
+
+            
             return users;
         
         }
+        public User() 
+        {
         
+        }
     }
 }

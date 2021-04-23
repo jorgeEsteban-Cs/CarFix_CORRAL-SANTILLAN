@@ -20,21 +20,19 @@ namespace CarFix_UI
 
         private void button_agregar_user_Click(object sender, EventArgs e)
         {
-            bool res = false;
-            User userAdd = new User(textBox_user_Name.Text.ToString(), textBox_user_lastName.Text.ToString(), textBox_email.Text.ToString(), textBox_celular.Text.ToString(), textBox_curp.Text.ToString(), textBox_password.Text.ToString());
-
-            try 
-            {
-                
-                userAdd.insert();
-                MessageBox.Show("Agregado Correctamente");
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error" + ex);
-            }
             
+            User userAdd = new User(textBox_user_Name.Text, textBox_user_lastName.Text, textBox_email.Text, textBox_celular.Text, textBox_curp.Text, textBox_password.Text);
+
+            bool res = false;
+            
+                
+            res = userAdd.insert();
+            if(res)
+                MessageBox.Show("Agregado Correctamente");
+            else
+            {
+                MessageBox.Show(User.ERROR);
+            }
         }
 
         private void button_cancelar_agregar_user_Click(object sender, EventArgs e)
